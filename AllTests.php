@@ -51,31 +51,6 @@ class PHP_CompatInfo_AllTests
     }
 
     /**
-     * Adds the PHP_CompatInfo test suite.
-     *
-     * @return object the PHPUnit_Framework_TestSuite object
-     */
-    public static function suite()
-    {
-        $suite = new PHPUnit_Framework_TestSuite('PHP_CompatInfo Test Suite');
-        $suite->addTestSuite('PHP_CompatInfo_TestSuite_Standard');
-        $suite->addTestSuite('PHP_CompatInfo_TestSuite_Bugs');
-
-        if (PHP_CompatInfo_AllTests::packageInstalled('Console_GetArgs', '1.3.3')
-            && PHP_CompatInfo_AllTests::packageInstalled('Console_Table', '1.0.5')) {
-            /* Add CLI test suite, only
-               if packages below are installed on your system :
-               - Console_GetArgs 1.3.3 or better
-               - Console_Table   1.0.5 or better
-             */
-            include_once 'PHP_CompatInfo_TestSuite_Cli.php';
-
-            $suite->addTestSuite('PHP_CompatInfo_TestSuite_Cli');
-        }
-        return $suite;
-    }
-
-    /**
      * Check if a package is installed
      *
      * Simple function to check if a package is installed under user
